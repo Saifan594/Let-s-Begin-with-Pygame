@@ -1,30 +1,41 @@
+print("\033c")
+
 import pygame
 
 pygame.init()
 
-white = (255, 255, 255)
+display_title = "My First Game Screen"
+display_size = (500, 700)
+display_color = (255, 255, 255)
+display = pygame.display.set_mode(display_size)
+pygame.display.set_caption(display_title)
 
+image_filename = "Photo.jpg"
+image_size = (300, 300)
+image_dest = (100, 100)
+image_surface = pygame.image.load(image_filename)
+image = pygame.transform.scale(image_surface, image_size)
+
+font_size = 100
+font_text = "Saifan"
+font_antialias = True
+font_dest = (100, 500)
+font_color = (0, 0, 0)
+font = pygame.font.SysFont(pygame.font.get_default_font(), font_size)
+text = font.render(font_text, font_antialias, font_color)
+
+clock_framerate = 30
 clock = pygame.time.Clock()
 
-displaySurface = pygame.display.set_mode((500, 500))
-pygame.display.set_caption("My First Game Screen")
-
-image = pygame.image.load("Photo.jpg")
-
-defaultImageSize = (200, 200)
-
-image = pygame.transform.scale(image, defaultImageSize)
-
-defaultImagePosition = (150, 150)
-
 while True:
-    displaySurface.fill(white)
-    displaySurface.blit(image, defaultImagePosition)
+    display.fill(display_color)
+    
+    display.blit(image, image_dest)
+    display.blit(text, font_dest)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
     
     pygame.display.flip()
-    
-    clock.tick(30)
+    clock.tick(clock_framerate)

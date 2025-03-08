@@ -8,7 +8,6 @@ display_title = "My First Game Screen"
 display_size = (500, 700)
 display_color = (255, 255, 255)
 display = pygame.display.set_mode(display_size)
-pygame.display.set_caption(display_title)
 
 image_filename = "Photo.jpg"
 image_size = (300, 300)
@@ -26,6 +25,8 @@ text = font.render(font_text, font_antialias, font_color)
 
 clock_framerate = 30
 clock = pygame.time.Clock()
+
+pygame.display.set_caption(display_title)
 
 while True:
     display.fill(display_color)
